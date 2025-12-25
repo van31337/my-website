@@ -14,9 +14,15 @@ const contactLinks = [
   },
   {
     icon: FaPhone,
-    label: "Phone",
+    label: "Phone (CA)",
     value: "+1 (825) 365-8447",
     href: "tel:+18253658447",
+  },
+  {
+    icon: FaPhone,
+    label: "Phone (VN)",
+    value: "+84 906 908 300",
+    href: "tel:+84906908300",
   },
   {
     icon: FaGithub,
