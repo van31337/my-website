@@ -1,224 +1,91 @@
-import React from "react";
-
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-
 import { motion } from "framer-motion";
+import { FaSpotify, FaCode, FaMobile, FaGlobe, FaPlane, FaDatabase } from "react-icons/fa";
+import { GlassCard, PageWrapper } from "../components";
+import "../styles/Projects.scss";
 
-import "../styles/StyledProjects.scss";
+const projects = [
+  {
+    icon: FaSpotify,
+    title: "Spotify API Dashboard",
+    description:
+      "A server that fetches and displays Spotify account information with a sleek Spotify-themed interface. Features real-time data visualization.",
+    tags: ["Node.js", "REST API", "OAuth"],
+  },
+  {
+    icon: FaCode,
+    title: "ML Notebook Collection",
+    description:
+      "A comprehensive collection of Jupyter notebooks covering linear algebra fundamentals to advanced machine learning models for various problem domains.",
+    tags: ["Python", "TensorFlow", "Scikit-learn"],
+  },
+  {
+    icon: FaMobile,
+    title: "React Native Chat App",
+    description:
+      "A WhatsApp-like messaging application supporting private and group chats with image sharing, emojis, and real-time messaging.",
+    tags: ["React Native", "Firebase", "WebSocket"],
+  },
+  {
+    icon: FaGlobe,
+    title: "This Portfolio Website",
+    description:
+      "A Matrix-themed personal website built with React, featuring animated backgrounds, glassmorphism UI, and deployed on AWS.",
+    tags: ["React", "AWS", "Framer Motion"],
+  },
+  {
+    icon: FaPlane,
+    title: "Travel Agency System",
+    description:
+      "A robust database application for travel agencies with optimized queries, hardware failure protection, and fast transaction processing.",
+    tags: ["SQL Server", "Database Design", "Optimization"],
+  },
+  {
+    icon: FaDatabase,
+    title: "OLAP Sync System",
+    description:
+      "Production data synchronization system managing hundreds of databases across multiple MySQL servers with real-time monitoring.",
+    tags: ["MySQL", "PowerShell", "Grafana"],
+  },
+];
 
 const Projects = () => {
   return (
-    <div className="cards-container-projects">
-      <motion.div className="card-container" whileHover={{ scale: 1.1 }}>
-        <Card
-          className="card-projects"
-          sx={{
-            backgroundColor: "green",
-            opacity: "0.8",
-            backdropFilter: "blur(20px)",
-            border: "2px solid green",
-            borderRadius: "10px",
-            padding: "10px",
-          }}
-        >
-          <CardContent>
-            <Typography
-              className="card-title"
-              gutterBottom
-              variant="h3"
-              component="div"
-              fontSize={30}
-              color="white"
-              display="block"
-            >
-              Spotify API
-            </Typography>
-            <div className="body-container">
-              <Typography
-                variant="body1"
-                color="white"
-                className="body-typography"
-                display="block"
-                fontSize={16}
-              >
-                I created a simple server that grab information of a given
-                account and then display that information using spotify theme.
-              </Typography>
-            </div>
-            <div className="body-container"></div>
-          </CardContent>
-        </Card>
+    <PageWrapper className="projects-page">
+      <motion.div
+        className="projects-header"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="page-title">Projects</h1>
+        <p className="page-subtitle">
+          A collection of things I've built and worked on
+        </p>
       </motion.div>
 
-      <motion.div className="card-container" whileHover={{ scale: 1.1 }}>
-        <Card
-          className="card-projects"
-          sx={{
-            backgroundColor: "green",
-            opacity: "0.8",
-            backdropFilter: "blur(20px)",
-            border: "2px solid green",
-            borderRadius: "10px",
-            padding: "10px",
-          }}
-        >
-          <CardContent>
-            <Typography
-              className="card-title"
-              gutterBottom
-              variant="h3"
-              component="div"
-              fontSize={30}
-              color="white"
-              display="block"
-            >
-              Colab Notebook
-            </Typography>
-            <div className="body-container">
-              <Typography
-                variant="body1"
-                color="white"
-                className="body-typography"
-                display="block"
-                fontSize={16}
-              >
-                A set of collection notebook exploring topics from basic linear
-                algebra to creating almost a hundred of models with different
-                scale to solve different problems
-              </Typography>
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <GlassCard
+            key={project.title}
+            delay={0.1 + index * 0.1}
+            className="project-card"
+          >
+            <div className="project-icon">
+              <project.icon />
             </div>
-            <div className="body-container"></div>
-          </CardContent>
-        </Card>
-      </motion.div>
-
-      <motion.div className="card-container" whileHover={{ scale: 1.1 }}>
-        <Card
-          className="card-projects"
-          sx={{
-            backgroundColor: "green",
-            opacity: "0.8",
-            backdropFilter: "blur(20px)",
-            border: "2px solid green",
-            borderRadius: "10px",
-            padding: "10px",
-          }}
-        >
-          <CardContent>
-            <Typography
-              className="card-title"
-              gutterBottom
-              variant="h3"
-              component="div"
-              fontSize={30}
-              color="white"
-              display="block"
-            >
-              React Native chat apps
-            </Typography>
-            <div className="body-container">
-              <Typography
-                variant="body1"
-                color="white"
-                className="body-typography"
-                display="block"
-                fontSize={16}
-              >
-                I created an apps that is similar to WhatsApp that allows you to
-                char privately or in a group. It also allows you to send images,
-                emojis, and other stuff. This is a way for me to learn React
-                Native
-              </Typography>
+            <h3 className="project-title">{project.title}</h3>
+            <p className="project-description">{project.description}</p>
+            <div className="project-tags">
+              {project.tags.map((tag) => (
+                <span key={tag} className="tag">
+                  {tag}
+                </span>
+              ))}
             </div>
-          </CardContent>
-        </Card>
-      </motion.div>
-
-      <motion.div className="card-container" whileHover={{ scale: 1.1 }}>
-        <Card
-          className="card-projects"
-          sx={{
-            backgroundColor: "green",
-            opacity: "0.8",
-            backdropFilter: "blur(20px)",
-            border: "2px solid green",
-            borderRadius: "10px",
-            padding: "10px",
-          }}
-        >
-          <CardContent>
-            <Typography
-              className="card-title"
-              gutterBottom
-              variant="h3"
-              component="div"
-              fontSize={30}
-              color="white"
-              display="block"
-            >
-              This website
-            </Typography>
-            <div className="body-container">
-              <Typography
-                variant="body1"
-                color="white"
-                className="body-typography"
-                display="block"
-                fontSize={16}
-              >
-                I made this website using React. I tried to make it as aethetic
-                as possible. Then I deployed it using AWS to host my website.
-              </Typography>
-            </div>
-          </CardContent>
-        </Card>
-      </motion.div>
-
-      <motion.div className="card-container" whileHover={{ scale: 1.1 }}>
-        <Card
-          className="card-projects"
-          sx={{
-            backgroundColor: "green",
-            opacity: "0.8",
-            backdropFilter: "blur(20px)",
-            border: "2px solid green",
-            borderRadius: "10px",
-            padding: "10px",
-          }}
-        >
-          <CardContent>
-            <Typography
-              className="card-title"
-              gutterBottom
-              variant="h3"
-              component="div"
-              fontSize={30}
-              color="white"
-              display="block"
-            >
-              Travel Agency Expert
-            </Typography>
-            <div className="body-container">
-              <Typography
-                variant="body1"
-                color="white"
-                className="body-typography"
-                display="block"
-                fontSize={16}
-              >
-                This is a simple application to store data for a travel agency.
-                The main thing to focus on this project is the database. I used
-                many technique to ensure that we minimize the damage when
-                hardware failure occurs. Also, we want to make sure the database
-                is optimized for fast transaction.
-              </Typography>
-            </div>
-          </CardContent>
-        </Card>
-      </motion.div>
-    </div>
+          </GlassCard>
+        ))}
+      </div>
+    </PageWrapper>
   );
 };
 

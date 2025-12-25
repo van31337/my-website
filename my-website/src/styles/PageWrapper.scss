@@ -1,0 +1,23 @@
+.page-wrapper {
+  min-height: calc(100vh - 70px);
+  padding-top: 70px; // Account for fixed navbar
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+// Page variants
+.page-wrapper--centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.page-wrapper--full {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}

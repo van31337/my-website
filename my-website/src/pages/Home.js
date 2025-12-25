@@ -1,141 +1,95 @@
-import React from "react";
-
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-
 import { motion } from "framer-motion";
-
-import "../styles/StyledHome.scss";
+import { GlassCard, PageWrapper } from "../components";
+import "../styles/Home.scss";
 
 const Home = () => {
   return (
-    <div className="cards-container">
-      <motion.div className="card-container" whileHover={{ scale: 1.05 }}>
-        <Card
-          className="card"
-          sx={{
-            backgroundColor: "green",
-            opacity: "0.8",
-            backdropFilter: "blur(20px)",
-            border: "2px solid green",
-            borderRadius: "10px",
-            padding: "10px",
-          }}
+    <PageWrapper className="home-page">
+      <div className="hero-section">
+        <motion.div
+          className="hero-content"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <CardContent>
-            <Typography
-              className="card-title"
-              gutterBottom
-              variant="h3"
-              component="div"
-              fontSize={30}
-              color="white"
-              display="block"
-            >
-              Professional
-            </Typography>
-            <div className="body-container">
-              <Typography
-                variant="body1"
-                color="white"
-                className="body-typography"
-                display="block"
-                fontSize={16}
-              >
-                &#9733; I have an honour Computer Science degree from University
-                of Calary and DBA certificate from SAIT. I have background in
-                Maths, Stat, and Data Science. I'm highly interested in data
-                related fields such as Database Administrator, Machine Learning,
-                Data Analyst,...
-              </Typography>
-            </div>
-            <div className="body-container">
-              <Typography
-                variant="body1"
-                color="white"
-                className="body-typography"
-                display="block"
-                fontSize={16}
-              >
-                &#9733; I'm passionate about my work and I know how to get my
-                job done. I'm honest, detail-oriented, and open to criticism. I
-                run toward challenges because I can learn the most from them.
-              </Typography>
-            </div>
-          </CardContent>
-        </Card>
-      </motion.div>
+          <motion.h1
+            className="hero-title"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <span className="greeting">Hello, I'm</span>
+            <span className="name">Van Tran</span>
+          </motion.h1>
+          <motion.p
+            className="hero-subtitle"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            Database Administrator & Software Developer
+          </motion.p>
+        </motion.div>
+      </div>
 
-      <motion.div className="card-container" whileHover={{ scale: 1.05 }}>
-        <Card
-          className="card"
-          sx={{
-            backgroundColor: "green",
-            opacity: "0.8",
-            backdropFilter: "blur(20px)",
-            border: "2px solid green",
-            borderRadius: "10px",
-            padding: "10px",
-          }}
-        >
-          <CardContent>
-            <Typography
-              className="card-title"
-              gutterBottom
-              variant="h3"
-              component="div"
-              fontSize={30}
-              color="white"
-              display="block"
-            >
-              Personal
-            </Typography>
-            <div className="body-container">
-              <Typography
-                variant="body1"
-                color="white"
-                className="body-typography"
-                display="block"
-                fontSize={16}
-              >
-                &#9733; Here are some of the most common adjectives my friends
-                use to describe me: hillarious, very friendly, and quite
-                open-minded. I also like jokes, puns, and especially memes. I
-                also love animals. I usually say that "if not friend, why friend
-                shaped". Here are some photos of my lovely dog:
-              </Typography>
+      <div className="cards-grid">
+        <GlassCard delay={0.3} className="info-card">
+          <h2 className="card-title">
+            <span className="icon">&#128187;</span> Professional
+          </h2>
+          <div className="card-body">
+            <p>
+              <span className="bullet">&#9733;</span>
+              Honours Computer Science degree from University of Calgary and DBA
+              certificate from SAIT. Strong background in Mathematics, Statistics,
+              and Data Science.
+            </p>
+            <p>
+              <span className="bullet">&#9733;</span>
+              Passionate about data-related fields: Database Administration,
+              Machine Learning, Data Analysis, and more.
+            </p>
+            <p>
+              <span className="bullet">&#9733;</span>
+              Detail-oriented, honest, and always ready to tackle challenges
+              head-on. I believe the best learning comes from solving hard problems.
+            </p>
+          </div>
+        </GlassCard>
+
+        <GlassCard delay={0.5} className="info-card">
+          <h2 className="card-title">
+            <span className="icon">&#128578;</span> Personal
+          </h2>
+          <div className="card-body">
+            <p>
+              <span className="bullet">&#9733;</span>
+              Friends describe me as hilarious, friendly, and open-minded.
+              I love jokes, puns, and especially memes!
+            </p>
+            <p>
+              <span className="bullet">&#9733;</span>
+              Animal lover with a motto: "If not friend, why friend shaped?"
+            </p>
+            <div className="pet-gallery">
+              <p className="gallery-label">My lovely dog:</p>
+              <div className="gallery-images">
+                {[1, 2, 3, 4].map((num) => (
+                  <motion.img
+                    key={num}
+                    src={`https://vans-website.s3.amazonaws.com/${num}.jpg`}
+                    alt={`Pet photo ${num}`}
+                    className="pet-image"
+                    whileHover={{ scale: 1.1, rotate: 2 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  />
+                ))}
+              </div>
             </div>
-            <div className="image-container">
-              <img
-                src="https://vans-website.s3.amazonaws.com/1.jpg"
-                alt="Error with the link"
-                width="100"
-                height="100"
-              />
-              <img
-                src="https://vans-website.s3.amazonaws.com/2.jpg"
-                alt="Error with the link"
-                width="100"
-                height="100"
-              />
-              <img
-                src="https://vans-website.s3.amazonaws.com/3.jpg"
-                alt="Error with the link"
-                width="100"
-                height="100"
-              />
-              <img
-                src="https://vans-website.s3.amazonaws.com/4.jpg"
-                alt="Error with the link"
-                width="100"
-                height="100"
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </motion.div>
-    </div>
+          </div>
+        </GlassCard>
+      </div>
+    </PageWrapper>
   );
 };
 

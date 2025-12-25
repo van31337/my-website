@@ -1,0 +1,407 @@
+// Isometric perspective transform
+$iso-skew: -30deg;
+$iso-scale: 0.866;
+
+// Colors
+$green: #00ff00;
+$green-dim: #00aa00;
+$green-dark: #004400;
+$red: #ff4444;
+$yellow: #ffaa00;
+$blue: #4488ff;
+
+// ============ SERVER RACK ============
+.iso-server-rack {
+  position: relative;
+  width: 80px;
+  height: 120px;
+  transform-style: preserve-3d;
+
+  .rack-top {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+    transform: rotateX(60deg) rotateZ(45deg) translateZ(60px);
+    top: -20px;
+  }
+
+  .rack-front {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 5px;
+  }
+
+  .rack-side {
+    position: absolute;
+    width: 40px;
+    height: 100px;
+    background: linear-gradient(90deg, #1a1a1a 0%, #0a0a0a 100%);
+    left: 80px;
+    transform: skewY(-30deg);
+    transform-origin: top left;
+  }
+
+  .server-unit {
+    background: #111;
+    border: 1px solid #333;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    gap: 4px;
+
+    .led {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: $green;
+      box-shadow: 0 0 6px $green;
+      animation: blink 2s infinite;
+
+      &:nth-child(2) { animation-delay: 0.3s; }
+      &:nth-child(3) { animation-delay: 0.6s; }
+    }
+
+    .vents {
+      flex: 1;
+      height: 60%;
+      background: repeating-linear-gradient(
+        90deg,
+        #222 0px,
+        #222 2px,
+        #111 2px,
+        #111 4px
+      );
+      margin-left: auto;
+    }
+  }
+
+  &.error .server-unit .led {
+    background: $red;
+    box-shadow: 0 0 6px $red;
+    animation: pulse-red 0.5s infinite;
+  }
+
+  &.warning .server-unit .led:first-child {
+    background: $yellow;
+    box-shadow: 0 0 6px $yellow;
+  }
+}
+
+// ============ DATABASE ============
+.iso-database {
+  position: relative;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .db-top {
+    width: 60px;
+    height: 20px;
+    background: linear-gradient(180deg, $green-dim 0%, $green-dark 100%);
+    border-radius: 50%;
+    border: 2px solid $green;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  }
+
+  .db-body {
+    width: 60px;
+    height: 50px;
+    background: linear-gradient(90deg, $green-dark 0%, darken($green-dark, 10%) 50%, $green-dark 100%);
+    border-left: 2px solid $green;
+    border-right: 2px solid $green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: -10px;
+
+    .db-ring {
+      height: 1px;
+      background: rgba(0, 255, 0, 0.3);
+    }
+  }
+
+  .db-bottom {
+    width: 60px;
+    height: 20px;
+    background: linear-gradient(180deg, $green-dark 0%, darken($green-dark, 15%) 100%);
+    border-radius: 50%;
+    border: 2px solid $green;
+    margin-top: -10px;
+  }
+
+  .db-label {
+    position: absolute;
+    bottom: -25px;
+    font-size: 10px;
+    color: $green;
+    font-family: 'Fira Code', monospace;
+    white-space: nowrap;
+  }
+
+  &.error {
+    .db-top, .db-bottom {
+      border-color: $red;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    }
+    .db-body {
+      border-color: $red;
+    }
+  }
+
+  &.syncing {
+    animation: pulse-green 1s infinite;
+  }
+}
+
+// ============ DATA FLOW ============
+.data-flow {
+  position: relative;
+  width: 100px;
+  height: 4px;
+
+  .particle {
+    position: absolute;
+    width: 8px;
+    height: 4px;
+    background: $green;
+    border-radius: 2px;
+    box-shadow: 0 0 10px $green;
+    animation: flow-right 2s linear infinite;
+
+    &:nth-child(2) { animation-delay: 0.4s; }
+    &:nth-child(3) { animation-delay: 0.8s; }
+    &:nth-child(4) { animation-delay: 1.2s; }
+    &:nth-child(5) { animation-delay: 1.6s; }
+  }
+
+  &.left .particle {
+    animation-name: flow-left;
+  }
+
+  &.vertical {
+    width: 4px;
+    height: 100px;
+
+    .particle {
+      width: 4px;
+      height: 8px;
+      animation-name: flow-down;
+    }
+  }
+
+  &.red .particle {
+    background: $red;
+    box-shadow: 0 0 10px $red;
+  }
+}
+
+// ============ TERMINAL ============
+.iso-terminal {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Fira Code', monospace;
+
+  .terminal-header {
+    background: #2a2a2a;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .terminal-buttons {
+      display: flex;
+      gap: 6px;
+
+      .btn {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+
+        &.red { background: #ff5f56; }
+        &.yellow { background: #ffbd2e; }
+        &.green { background: #27ca40; }
+      }
+    }
+
+    .terminal-title {
+      font-size: 12px;
+      color: #888;
+      margin-left: auto;
+    }
+  }
+
+  .terminal-body {
+    padding: 12px;
+    font-size: 12px;
+    color: $green;
+    min-height: 100px;
+    line-height: 1.6;
+
+    .command {
+      color: #fff;
+      &::before {
+        content: '$ ';
+        color: $green;
+      }
+    }
+
+    .output {
+      color: #aaa;
+      margin-left: 10px;
+    }
+
+    .error {
+      color: $red;
+    }
+
+    .success {
+      color: $green;
+    }
+  }
+}
+
+// ============ MONITOR ============
+.iso-monitor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .monitor-screen {
+    width: 200px;
+    height: 120px;
+    background: #0a0a0a;
+    border: 3px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .monitor-stand {
+    width: 20px;
+    height: 30px;
+    background: linear-gradient(90deg, #444 0%, #222 100%);
+  }
+
+  .monitor-base {
+    width: 60px;
+    height: 8px;
+    background: linear-gradient(180deg, #444 0%, #222 100%);
+    border-radius: 2px;
+  }
+}
+
+// ============ METRICS ============
+.metric-card {
+  background: rgba(0, 20, 0, 0.8);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+
+  .metric-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: $green;
+    font-family: 'Fira Code', monospace;
+  }
+
+  .metric-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .metric-trend {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  &.up .metric-trend { color: $green; }
+  &.down .metric-trend { color: $red; }
+}
+
+// ============ ALERT BADGE ============
+.alert-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  background: $red;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 0 10px $red;
+  animation: pulse-red 1s infinite;
+}
+
+// ============ TYPING TEXT ============
+.typing-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid $green;
+  animation: cursor-blink 0.8s infinite;
+}
+
+// ============ ANIMATIONS ============
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 5px $red; }
+  50% { box-shadow: 0 0 20px $red, 0 0 30px $red; }
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(0, 255, 0, 0.6); }
+}
+
+@keyframes flow-right {
+  0% { left: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@keyframes flow-left {
+  0% { right: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { right: 100%; opacity: 0; }
+}
+
+@keyframes flow-down {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { border-color: $green; }
+  50% { border-color: transparent; }
+}

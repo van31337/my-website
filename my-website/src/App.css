@@ -1,3 +1,4 @@
-.App {
-  text-align: center;
+.main-content {
+  position: relative;
+  z-index: 1;
 }

@@ -1,37 +1,24 @@
-import React from "react";
-
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-
 import { motion } from "framer-motion";
-import "../styles/StyledResume.scss";
-
-import { PDFViewer } from "../components";
+import { GlassCard, PageWrapper, PDFViewer } from "../components";
+import "../styles/Resume.scss";
 
 const Resume = () => {
   return (
-    <div className="cards-container-resume">
-      <motion.div className="card-container">
-        <Card
-          className="card-resume"
-          sx={{
-            backgroundColor: "green",
-            opacity: "1",
-            backdropFilter: "blur(20px)",
-            border: "2px solid green",
-            borderRadius: "10px",
-            padding: "10px",
-          }}
-        >
-          <CardContent>
-            <div className="pdf-container">
-              <PDFViewer url="https://vans-website.s3.amazonaws.com/Awesome_CV.pdf" />
-              ;
-            </div>
-          </CardContent>
-        </Card>
+    <PageWrapper className="resume-page">
+      <motion.div
+        className="resume-header"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="page-title">Resume</h1>
+        <p className="page-subtitle">My professional experience and qualifications</p>
       </motion.div>
-    </div>
+
+      <GlassCard delay={0.2} className="resume-card" hover={false}>
+        <PDFViewer url="https://vans-website.s3.amazonaws.com/Awesome_CV.pdf" />
+      </GlassCard>
+    </PageWrapper>
   );
 };
 
