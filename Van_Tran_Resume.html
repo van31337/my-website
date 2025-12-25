@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Van Q. Tran - Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 0.5in;
+      max-width: 8.5in;
+      margin: 0 auto;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+      }
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #2d5a27;
+    }
+
+    .name {
+      font-size: 28pt;
+      font-weight: 700;
+      color: #2d5a27;
+      margin-bottom: 5px;
+    }
+
+    .title {
+      font-size: 11pt;
+      font-weight: 500;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .contact-info {
+      font-size: 10pt;
+      color: #444;
+    }
+
+    .contact-info a {
+      color: #2d5a27;
+      text-decoration: none;
+    }
+
+    .contact-info span {
+      margin: 0 8px;
+      color: #999;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #2d5a27;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+    }
+
+    /* Summary */
+    .summary {
+      font-size: 10.5pt;
+      color: #333;
+      text-align: justify;
+    }
+
+    /* Experience */
+    .job {
+      margin-bottom: 15px;
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+
+    .company {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .location {
+      font-size: 10pt;
+      color: #2d5a27;
+      font-weight: 500;
+    }
+
+    .job-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .job-title {
+      font-size: 10pt;
+      font-style: italic;
+      color: #555;
+    }
+
+    .dates {
+      font-size: 10pt;
+      color: #666;
+    }
+
+    .job ul {
+      padding-left: 18px;
+      font-size: 10pt;
+    }
+
+    .job li {
+      margin-bottom: 4px;
+      color: #333;
+    }
+
+    /* Education */
+    .education-item {
+      margin-bottom: 12px;
+    }
+
+    .school {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .degree {
+      font-style: italic;
+      color: #555;
+      font-size: 10pt;
+    }
+
+    .project-title {
+      font-weight: 600;
+      font-size: 10pt;
+      margin-top: 8px;
+    }
+
+    .project-desc {
+      font-size: 10pt;
+      color: #333;
+      margin-left: 15px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 6px 15px;
+      font-size: 10pt;
+    }
+
+    .skill-category {
+      font-weight: 600;
+      color: #2d5a27;
+      text-align: right;
+    }
+
+    .skill-items {
+      color: #333;
+    }
+
+    /* Awards */
+    .award {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10pt;
+      margin-bottom: 4px;
+    }
+
+    .award-name {
+      color: #333;
+    }
+
+    .award-location {
+      color: #666;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="name">Van Q. Tran</h1>
+    <div class="title">Database Administrator & Server Administrator</div>
+    <div class="contact-info">
+      <a href="tel:+18253658447">(825) 365-8447</a>
+      <span>|</span>
+      <a href="mailto:wadvan987@gmail.com">wadvan987@gmail.com</a>
+      <span>|</span>
+      <a href="https://github.com/van31337">github.com/van31337</a>
+      <span>|</span>
+      <a href="https://linkedin.com/in/van-tran-1324b1174">LinkedIn</a>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Summary</h2>
+    <p class="summary">
+      Results-driven Database Administrator and Software Developer with hands-on experience in enterprise system management, database optimization, and OLAP data synchronization. Skilled in administering MySQL, SQL Server, PostgreSQL, and Oracle with proven expertise in ETL pipelines, performance tuning, and high-availability systems. Strong background in full-stack development (React, Node.js), data engineering, and cloud platforms (AWS). Recognized for improving operational efficiency, building scalable data solutions, and cross-team collaboration.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Work Experience</h2>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="company">Salary.com</span>
+        <span class="location">Remote</span>
+      </div>
+      <div class="job-title-row">
+        <span class="job-title">Database Developer</span>
+        <span class="dates">Oct 2025 - Present</span>
+      </div>
+      <ul>
+        <li>Architect and maintain OLAP data synchronization system managing 500+ MySQL databases across 8 production servers, ensuring real-time data availability for compensation analytics.</li>
+        <li>Develop and optimize ETL pipelines using PowerShell and BCP for SQL Server to MySQL data replication with 4-8 minute end-to-end latency.</li>
+        <li>Implement monitoring solutions with Grafana and custom Node.js exporters, achieving 99.9% uptime for mission-critical data infrastructure.</li>
+        <li>Design stored procedures and optimize complex queries, reducing refresh times by 40% through index optimization and query restructuring.</li>
+        <li>Collaborate with cross-functional teams to troubleshoot replication issues, disk space alerts, and performance bottlenecks in production environment.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="company">Attabotics</span>
+        <span class="location">Calgary, Alberta</span>
+      </div>
+      <div class="job-title-row">
+        <span class="job-title">Field Engineer - Database Specialist</span>
+        <span class="dates">Feb 2025 - July 2025</span>
+      </div>
+      <ul>
+        <li>Triaged technical incidents by categorizing, recording, and analyzing logs for timely resolution and knowledge retention.</li>
+        <li>Authored comprehensive documentation including operational instructions and configuration guidelines.</li>
+        <li>Assisted in database monitoring and optimization, identifying risks and implementing preventative measures.</li>
+        <li>Delivered technical training to field staff, improving adoption of tools and best practices.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="company">Alberta Health Services</span>
+        <span class="location">Calgary, Alberta</span>
+      </div>
+      <div class="job-title-row">
+        <span class="job-title">Server Administrator - WPCS Team</span>
+        <span class="dates">Jan 2024 - Jan 2025</span>
+      </div>
+      <ul>
+        <li>Executed monthly updates and maintenance on SharePoint and Office servers, ensuring optimal performance and compliance.</li>
+        <li>Designed relational data models, authored complex SQL queries, and developed analytical dashboards in Power BI.</li>
+        <li>Deployed PostgreSQL databases with containerized Drupal and Redis servers for the Personal Environment Control project.</li>
+        <li>Implemented vector database for PostgreSQL to power the AHS virtual assistant system.</li>
+        <li>Spearheaded enterprise-wide rollout of DynaTrace monitoring platform.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="company">Imagineers Creative Labs</span>
+        <span class="location">Calgary, Alberta</span>
+      </div>
+      <div class="job-title-row">
+        <span class="job-title">Computer Science Tutor</span>
+        <span class="dates">June 2023 - Dec 2024</span>
+      </div>
+      <ul>
+        <li>Designed and delivered interactive lessons in Python, HTML/CSS/JavaScript, and machine learning.</li>
+        <li>Mentored students through one-on-one and group sessions on real-world coding concepts.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Education</h2>
+
+    <div class="education-item">
+      <div class="job-header">
+        <span class="school">Southern Alberta Institute of Technology</span>
+        <span class="location">Calgary, Canada</span>
+      </div>
+      <div class="job-title-row">
+        <span class="degree">Database Administration Program</span>
+        <span class="dates">Sept 2022 - May 2023</span>
+      </div>
+    </div>
+
+    <div class="education-item">
+      <div class="job-header">
+        <span class="school">University of Calgary</span>
+        <span class="location">Calgary, Canada</span>
+      </div>
+      <div class="job-title-row">
+        <span class="degree">Honor B.S. in Computer Science, Minor in Mathematics & Data Science</span>
+        <span class="dates">Sept 2016 - May 2021</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <span class="skill-category">Databases</span>
+      <span class="skill-items">MySQL, SQL Server, PostgreSQL, Oracle, Redis, DynamoDB</span>
+
+      <span class="skill-category">Languages</span>
+      <span class="skill-items">SQL, PL/SQL, T-SQL, Python, JavaScript, PowerShell, Java, C++</span>
+
+      <span class="skill-category">Backend</span>
+      <span class="skill-items">Node.js, Express, Docker, Kubernetes, ETL Pipelines</span>
+
+      <span class="skill-category">Frontend</span>
+      <span class="skill-items">React, Redux, HTML5, CSS3/SASS, Framer Motion</span>
+
+      <span class="skill-category">Cloud & DevOps</span>
+      <span class="skill-items">AWS (EC2, S3, Lambda, ECS), Azure, Grafana, DynaTrace</span>
+
+      <span class="skill-category">DBA Skills</span>
+      <span class="skill-items">Performance Tuning, Backup/Recovery, Replication, High Availability, Data Warehousing</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Honors & Awards</h2>
+    <div class="award">
+      <span class="award-name"><strong>2017-2021</strong> Jason Lang Scholarship Recipient</span>
+      <span class="award-location">University of Calgary</span>
+    </div>
+    <div class="award">
+      <span class="award-name"><strong>2020</strong> Fourth Place, Datathon Competition</span>
+      <span class="award-location">University of Calgary</span>
+    </div>
+    <div class="award">
+      <span class="award-name"><strong>2019</strong> Computer Science Year-end Showcase Participant</span>
+      <span class="award-location">University of Calgary</span>
+    </div>
+  </section>
+</body>
+</html>
